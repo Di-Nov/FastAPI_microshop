@@ -19,7 +19,7 @@ async def get_products(session: AsyncSession) -> list[Product]:
 
 
 async def get_product(session: AsyncSession, product_id: int) -> Product | None:
-    return await session.get(Product.id, product_id)
+    return await session.get(Product, product_id)
 
 
 async def create_product(session: AsyncSession, product_in: ProductCreate) -> Product:
@@ -32,7 +32,7 @@ async def create_product(session: AsyncSession, product_in: ProductCreate) -> Pr
 
 async def update_product(
     session: AsyncSession,
-    product: ProductSchema,
+    product: Product,
     product_update: ProductUpdate | ProductUpdatePartial,
     partial: bool = False,
 ) -> Product:
