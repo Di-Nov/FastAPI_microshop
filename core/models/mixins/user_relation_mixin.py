@@ -3,22 +3,22 @@ from sqlalchemy import ForeignKey
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from core.models import User
+    from core.models.user import User
 
 
 class UserRelationMixin:
-    _user_id_unique: bool = False
-    _user_back_populates: str | None = None
-    _user_nullable: bool = False
+    __user_id_unique: bool = False
+    __user_back_populates: str | None = None
+    __user_nullable: bool = False
 
     @declared_attr
     def user_id(cls) -> Mapped[int]:
         return mapped_column(
             ForeignKey("users.id"),
-            unique=cls._user_id_unique,
-            nullable=cls._user_nullable,
+            unique=cls.__user_id_unique,
+            nullable=cls.__user_nullable,
         )
 
     @declared_attr
     def user(cls) -> Mapped["User"]:
-        return relationship("User", back_populates=cls._user_back_populates)
+        return relationship("User", back_populates=cls.__user_back_populates)

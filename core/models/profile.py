@@ -5,8 +5,8 @@ from core.models.mixins.user_relation_mixin import UserRelationMixin
 
 
 class Profile(Base, UserRelationMixin):
-    _user_id_unique = True
-    _user_back_populates = "profile"
+    __user_id_unique = True
+    __user_back_populates = "profile"
 
     first_name: Mapped[str | None] = mapped_column(String(50))
     last_name: Mapped[str | None] = mapped_column(String(50))
