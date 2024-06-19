@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status
 
 from . import crud_products
-from core.models.db_helper import db_helper
+from core.db_helper import db_helper
 from api.v1.products.schemas_products import (
     ProductSchema,
     ProductCreate,
