@@ -1,8 +1,7 @@
 
-
 migration: ## Create migrations using alembic
 	#docker-compose exec api alembic revision --autogenerate -m "$(m)"
-	exec alembic revision --autogenerate -m "$(m)"
+	alembic revision --autogenerate -m "$(m)"
 
 upgrade: ## Run migrations using alembic
 	exec alembic upgrade head
